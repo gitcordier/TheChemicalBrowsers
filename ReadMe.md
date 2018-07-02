@@ -1,4 +1,4 @@
-# 
+# A Chemical formula parser
 For a given chemical formula represented by a string, parser counts the number 
 of atoms of each element contained in the molecule and return a dict.
 
@@ -25,4 +25,6 @@ Note that brackets may be round, square or curly and can also be nested.
 Index after the braces is optional.
 
 # How to use the parser.
-Simply run "python parser.py". Works fine with python 3.5 and 3.6.
+Simply run "python parser.py" (must be a python 3).
+Alternatively, you can run "jupyter notebook", so that Parser.ipynb gets run.
+
