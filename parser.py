@@ -3,7 +3,7 @@
 # Indent:   4 spaces (no tab).                                                #
 # Width:    79 (comment lines < 73).                                          #
 # Author:   github.com/gitcordier <contact@gcordier.net>                      #
-# Version:  2.0.0                                                             #
+# Version:  2.0.1                                                             #
 # license:  Nope; consider the below code as public domain.                   #
 ###############################################################################
 
@@ -38,7 +38,7 @@ LOG_CHARACTER_IRRELEVANT= "Formula begins with irrelevant character: '"
 import string
 
 
-def parse_molecule(formula, debug=None):
+def parse_molecule(formula:str, debug=None)->dict:
     """
         Inputs:
             1.  formula: A string that represents a formula e.g. "H2O".
@@ -69,7 +69,7 @@ def parse_molecule(formula, debug=None):
                     If debug, then the  ValueError is raised.
         """
 
-        def nonzero(index):
+        def nonzero(index:int)-> int:
             """
                 Input:  a natural number 'index'.
                 Output: index, as a positive number.
@@ -290,25 +290,24 @@ def parse_molecule(formula, debug=None):
 
 def display_result(debug=None):
 
-    __ = "--  "    # For lovely indent. Constant
+    __ = "--  "    # For lovely indent. Constant.
     formula = ""   # Likely to change...
 
-    def get_result(result):
+    def get_result(array):
         """
             Returns:
                 1. the very dictionary of the parsing.
-                2. The parsing record ('array'), whether 'debug' is set.
+                2. The parsing record, whether 'debug' is set.
         """
-        array = ""
 
-        dictionary = dict((k, result[k])
-                          for k in result if k is not DEBUG_ARRAY)
+        dictionary = dict((k, array[k]) for k in array if k is not DEBUG_ARRAY)
+        
         if debug:
-            array += \
-                __+__+   "array = " + "\n" + "".join(
-                __+__+__+ str(e)    + "\n" for e in result[DEBUG_ARRAY])
+            return dictionary, \
+                __+__ + "array = " + "\n" + "".join(
+                __+__+__ + str(e) + "\n" for e in array[DEBUG_ARRAY])
 
-        return dictionary, array
+        return dictionary, ""
     #
 
     for k in formula_:
@@ -320,7 +319,7 @@ def display_result(debug=None):
               __+__ + "parsed: " + str(dictionary)  + "\n" + array)
     #
 
-# The to-be-parsed formulae are embedded in a dictionary.{(k, v)}:
+# The to-be-parsed formulae are embedded in a dictionary {(k, v)}:
 #    k: A human-readable name of a given element/chemical compound (C).
 #    v: C's formula.
 #
