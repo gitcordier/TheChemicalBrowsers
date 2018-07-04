@@ -3,12 +3,11 @@
 # Indent:   4 spaces (no tab).                                                #
 # Width:    79 (comment lines < 73).                                          #
 # Author:   github.com/gitcordier <contact@gcordier.net>                      #
-# Version:  2.0.1                                                             #
+# Version:  2.0.2                                                             #
 # license:  Nope; consider the below code as public domain.                   #
 ###############################################################################
 
-# Parser: BEGINNING. ---------------------------------------------------------#
-#
+
 # The parser. See ReadMe.md.
 # The parser is a routine (R) that relies on a six-state Turing machine (TM).
 # TM reads a formula from RIGHT to LEFT.
@@ -22,7 +21,7 @@ CLOSE     = {"[", "{", "("}  # Same remark.
 
 
 # The below function implements R.
-# Three 'static' parameters, as a beginning:
+# Six 'static' parameters, as a beginning:
 DEBUG_ARRAY             = "array"   # Dictionary key.
 LOG_EMPTY               = "No proper formula: Empty string. "
 LOG_COEFF               = "Coefficient equals 0."
@@ -198,7 +197,7 @@ def parse_molecule(formula:str, debug=None)->dict:
 
   # DEBUGGING:
   # DEBUG_i is be displayed whether array[DEBUG_i] brings some trouble.
-  # If 'ERROR:...' message, then dictionary becomes a 'debugging' one.
+  # If 'ERROR:...' message, then the returned dictionary is a 'debugging' one.
     DEBUG_i   = -1
     ERROR_key = None
 
@@ -285,7 +284,7 @@ def parse_molecule(formula:str, debug=None)->dict:
     return {**dictionary, **dictionary_log}
 
 # parse_molecule: END---------------------------------------------------------#
-# Parser: END. ---------------------------------------------------------------#
+
 # Inputs and display: BEGINNING. ---------------------------------------------#
 
 def display_result(debug=None):
@@ -305,7 +304,7 @@ def display_result(debug=None):
         if debug:
             return dictionary, \
                 __+__ + "array = " + "\n" + "".join(
-                __+__+__ + str(e) + "\n" for e in array[DEBUG_ARRAY])
+                __+__+__ + str(e)  + "\n" for e in array[DEBUG_ARRAY])
 
         return dictionary, ""
     #
