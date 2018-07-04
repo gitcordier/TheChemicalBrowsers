@@ -1,4 +1,4 @@
-# A Chemical formula parser
+# A chemical formula parser
 For a given chemical formula represented by a string, parser counts the number 
 of atoms of each element contained in the molecule and return a dict.
 
@@ -6,13 +6,13 @@ For example:
 
 ```py
 water = 'H2O'
-parse_molecule(water)                 # return {'H': 2, 'O': 1}
+parse_molecule(water)              # Returns {'H': 2, 'O': 1}.
 
 magnesium_hydroxide = 'Mg(OH)2'
-parse_molecule(magnesium_hydroxide)   # return {'Mg': 1, 'O': 2, 'H': 2}
+parse_molecule(magnesium_hydroxide)# Returns {'Mg': 1, 'O': 2, 'H': 2}.
 
 fremy_salt = 'K4[ON(SO3)2]2'
-parse_molecule(fremy_salt)             # return {'K': 4, 'O': 14, 'N': 2, 'S': 4}
+parse_molecule(fremy_salt)         # Returns {'K': 4, 'O': 14, 'N': 2, 'S': 4}.
 ```
 As you can see, some formulas have brackets in them. 
 The index outside the brackets tells you that you have to multiply count of 
